@@ -29,8 +29,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/mi-app:${{ github.sha }}
-            ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
+            ${{ secrets.DOCKER_USERNAME }}/inventario-api:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/inventario-api:latest
 
   deploy:
     needs: build-and-push
@@ -43,12 +43,12 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            IMAGE="${{ secrets.DOCKER_USERNAME }}/mi-app:latest"
+            IMAGE="${{ secrets.DOCKER_USERNAME }}/inventario-api:latest"
             
             # 1. Desplegar la nueva imagen en un puerto alterno (3001) para validación
             docker pull $IMAGE
             docker run -d \
-              --name mi-app-new \
+              --name inventario-new \
               --restart unless-stopped \
               -p 3001:3000 \
               $IMAGE
@@ -61,21 +61,21 @@ jobs:
               echo "Health check exitoso. Activando nuevo contenedor..."
               
               # 4. Detener y eliminar el contenedor viejo (si existe)
-              docker stop mi-app || true
-              docker rm mi-app || true
+              docker stop inventario || true
+              docker rm inventario || true
               
               # 5. Exponer el nuevo contenedor en el puerto público 80
               docker run -d \
-                --name mi-app \
+                --name inventario \
                 --restart unless-stopped \
                 -p 80:3000 \
                 $IMAGE
               
               # 6. Limpiar el contenedor de validación
-              docker rm -f mi-app-new || true
+              docker rm -f inventario-new || true
             else
               echo "Health check FALLIDO. Cancelando despliegue y manteniendo versión anterior."
-              docker rm -f mi-app-new || true
+              docker rm -f inventario-new || true
               exit 1
             fi
             
