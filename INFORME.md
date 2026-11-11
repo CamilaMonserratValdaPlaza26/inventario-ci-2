@@ -52,12 +52,10 @@ Estos requisitos se resolvieron primero en los ejercicios 3.1 a 3.4 y luego se a
 
 ### Cumplimiento de los requisitos
 
-| Requisito | Como se cumple | Evidencia |
-|---|---|---|
-| Dockerfile optimizado con build de varias etapas | Dos etapas, construccion y ejecucion; la etapa final solo copia lo necesario. | Figuras 3.1.1 y 3.1.3 |
-| Workflow con al menos dos trabajos | El workflow tiene build-and-push y los trabajos de despliegue de produccion y staging. | Figuras 3.3.6, 3.4.6, 2.2 y 2.5 |
-| Push a Docker Hub con etiqueta por SHA o semantica | Cada imagen se publica con el SHA del commit y con la etiqueta de rama. | Figuras 3.3.2, 7.24, 7.25 y 7.26 |
-| Despliegue automatizado en instancia remota | El workflow se conecta por SSH a EC2, descarga la imagen y reemplaza el contenedor. | Figuras 3.3.8, 3.3.10, 3.4.4 y 7 |
+- **Dockerfile optimizado con build de varias etapas:** dos etapas, construccion y ejecucion; la etapa final solo copia lo necesario. Evidencia: Figuras 3.1.1 y 3.1.3.
+- **Workflow con al menos dos trabajos:** el workflow tiene build-and-push y los trabajos de despliegue de produccion y staging. Evidencia: Figuras 3.3.6, 3.4.6, 2.2 y 2.5.
+- **Push a Docker Hub con etiqueta por SHA o semantica:** cada imagen se publica con el SHA del commit y con la etiqueta de rama. Evidencia: Figuras 3.3.2, 7.24, 7.25 y 7.26.
+- **Despliegue automatizado en instancia remota:** el workflow se conecta por SSH a EC2, descarga la imagen y reemplaza el contenedor. Evidencia: Figuras 3.3.8, 3.3.10, 3.4.4 y 7.
 
 ## Estructura del informe
 
