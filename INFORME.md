@@ -42,13 +42,24 @@ El laboratorio pide configurar un pipeline de despliegue continuo completo en un
 - El push de la imagen a Docker Hub con etiquetado semantico (por ejemplo v1.0.0) o con el SHA del commit.
 - El despliegue automatizado en una instancia remota (EC2, Lightsail o un servidor propio con Docker).
 
+El proyecto parte de la API CRUD desarrollada en el laboratorio anterior. Sobre esa base se agregaron el Dockerfile, el workflow de CD y el despliegue en la instancia remota.
+
 La practica individual agrega dos entornos de GitHub, staging y production, un paso de escaneo de vulnerabilidades, el informe con evidencias y el enlace desde el README.
 
 Estos requisitos se resolvieron primero en los ejercicios 3.1 a 3.4 y luego se ampliaron en la practica individual. El repositorio, la URL publica y este informe son los tres entregables que confirman el cumplimiento.
 
+### Cumplimiento de los requisitos
+
+| Requisito | Como se cumple | Evidencia |
+|---|---|---|
+| Dockerfile optimizado con build de varias etapas | Dos etapas, construccion y ejecucion; la etapa final solo copia lo necesario. | Figuras 3.1.1 y 3.1.3 |
+| Workflow con al menos dos trabajos | El workflow tiene build-and-push y los trabajos de despliegue de produccion y staging. | Figuras 3.3.6, 3.4.6, 2.2 y 2.5 |
+| Push a Docker Hub con etiqueta por SHA o semantica | Cada imagen se publica con el SHA del commit y con la etiqueta de rama. | Figuras 3.3.2, 7.24, 7.25 y 7.26 |
+| Despliegue automatizado en instancia remota | El workflow se conecta por SSH a EC2, descarga la imagen y reemplaza el contenedor. | Figuras 3.3.8, 3.3.10, 3.4.4 y 7 |
+
 ## Estructura del informe
 
-El informe se divide en dos partes para separar claramente la practica individual de los ejercicios guiados.
+El informe se divide en dos partes para separar claramente la practica individual de los ejercicios guiados. Primero se presenta la practica individual y mas abajo, separados y numerados, los ejercicios realizados.
 
 La primera parte, Practica individual, presenta el resultado final del pipeline: la descripcion y las decisiones tecnicas, las capturas de las fases en Acciones, la aplicacion funcionando en la instancia remota, el escaneo de vulnerabilidades, el rollback, la reflexion y la configuracion detallada de los entornos.
 
@@ -569,6 +580,12 @@ La captura muestra una ejecucion del workflow de integracion continua sobre la v
 ![Figura 3.3.11. CI sobre la version final](./img/lab52/practica%20individual/26.png)
 
 **Figura 3.3.11.** Workflow de integracion continua completado sobre la version final del proyecto.
+
+La captura muestra la pestana Acciones con el listado de ejecuciones del workflow de CD. Se observan las ramas, los estados y la cantidad de ejecuciones registradas, lo que confirma que el workflow se activa con cada push.
+
+![Figura 3.3.12. Listado de ejecuciones del CD](./img/lab52/27.png)
+
+**Figura 3.3.12.** Pestana Acciones con el listado de ejecuciones del workflow de CD.
 
 ## Ejercicio 3.4: Verificacion, fallo simulado y rollback
 
