@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+.git
+.github
+.env
+.env.*
+Dockerfile
+.dockerignore
+coverage
+tests
+img
+LOGO USFX
+INFORME.md
+INFORME-LAB-5.1.md
+README.md
