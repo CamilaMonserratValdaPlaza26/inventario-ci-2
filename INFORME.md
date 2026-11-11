@@ -28,6 +28,7 @@ SUCRE - BOLIVIA
 
 - Repositorio con el codigo fuente y los workflows: <https://github.com/CamilaMonserratValdaPlaza26/inventario-ci-2>
 - URL publica de produccion: <http://54.175.128.130/health>
+- Interfaz web de produccion: <http://54.175.128.130/>
 - URL publica de staging: <http://54.175.128.130:8080/health>
 - Informe completo: INFORME.md en la raiz del repositorio.
 
@@ -148,6 +149,8 @@ La captura muestra la respuesta del endpoint de salud en la direccion publica de
 ![Figura 7. Aplicacion de produccion respondiendo](./img/lab52/43.png)
 
 **Figura 7.** Endpoint de salud de produccion en la instancia remota con estado correcto y version 2.0.0.
+
+La misma instancia sirve la interfaz web en la raiz. Al abrir http://54.175.128.130/ se muestra la pagina informativa de la API, con el titulo, la descripcion del servicio, los botones de estado y productos y la tabla de endpoints. La interfaz se sirve desde el mismo contenedor de produccion que responde al endpoint de salud.
 
 ### 3.2 Staging en el puerto 8080
 
