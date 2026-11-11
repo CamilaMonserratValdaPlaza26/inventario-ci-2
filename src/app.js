@@ -11,14 +11,14 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', version: '2.0.0' });
 });
 
-// Pagina informativa de la API (evidencia del Laboratorio 5.1)
+// Pagina informativa de la API (evidencia del Laboratorio 5.2)
 app.get('/', (req, res) => {
   res.status(200).type('html').send(`<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API de Inventario - Laboratorio 5.1</title>
+  <title>API de Inventario - Laboratorio 5.2</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 <body>
   <main>
     <h1>API de Inventario</h1>
-    <p>Servicio CRUD de productos desarrollado con Node.js y Express para el Laboratorio 5.1 de la asignatura COM610.</p>
+    <p>Servicio CRUD de productos desarrollado con Node.js y Express para el Laboratorio 5.2 de la asignatura COM610.</p>
 
     <div class="links">
       <a href="/health">Ver estado del servicio</a>
@@ -87,7 +87,7 @@ app.get('/', (req, res) => {
       </tbody>
     </table>
 
-    <footer>Laboratorio 5.1 - Integracion continua con GitHub Actions</footer>
+    <footer>Laboratorio 5.2 - Despliegue continuo con GitHub Actions</footer>
   </main>
 </body>
 </html>`);
