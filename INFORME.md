@@ -30,6 +30,7 @@ SUCRE - BOLIVIA
 - URL publica de produccion: <http://54.175.128.130/health>
 - Interfaz web de produccion: <http://54.175.128.130/>
 - URL publica de staging: <http://54.175.128.130:8080/health>
+- Interfaz web de staging: <http://54.175.128.130:8080/>
 - Informe completo: INFORME.md en la raiz del repositorio.
 
 La practica se considera exitosa al presentar el repositorio, la URL publica donde la API esta desplegada y el informe con todas las evidencias. Los tres entregables se encuentran en esta seccion y en las capturas que siguen.
@@ -154,7 +155,7 @@ La misma instancia sirve la interfaz web en la raiz. Al abrir http://54.175.128.
 
 ### 3.2 Staging en el puerto 8080
 
-La captura muestra la pagina principal de la aplicacion en staging. Se observa la interfaz informativa de la API con el titulo, la descripcion y la tabla de endpoints. Que la pagina cargue en el puerto 8080 confirma que el contenedor de staging esta publicado en el puerto configurado para ese entorno.
+La captura muestra la pagina principal de la aplicacion en staging. La interfaz esta disponible en http://54.175.128.130:8080/ y se observa la informacion de la API con el titulo, la descripcion y la tabla de endpoints. Que la pagina cargue en el puerto 8080 confirma que el contenedor de staging esta publicado en el puerto configurado para ese entorno.
 
 ![Figura 8. Aplicacion de staging en el puerto 8080](./img/lab52/practica%20individual/32.png)
 
