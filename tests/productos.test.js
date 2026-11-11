@@ -13,7 +13,7 @@ describe('API de inventario', () => {
   test('GET /health responde ok', async () => {
     const res = await request(app).get('/health');
     expect(res.statusCode).toBe(200);
-    expect(res.body).toEqual({ status: 'ok' });
+    expect(res.body).toEqual({ status: 'ok', version: '2.0.0' });
   });
 
   test('GET / responde con la pagina informativa', async () => {
