@@ -691,27 +691,27 @@ La captura muestra que la version anterior siguio funcionando despues del fallo.
 
 Esta lista reune los comandos que se ejecutaron durante el laboratorio y su proposito en una linea.
 
-| Comando | Para que se uso |
+| Comando | Proposito |
 |---|---|
-| git add . | Prepara todos los cambios del proyecto para el commit. |
-| git commit -m mensaje | Guarda los cambios en el historial local con una descripcion. |
-| git push origin main | Sube la rama principal al repositorio remoto y dispara el pipeline. |
-| git checkout -b staging | Crea la rama de pruebas. |
-| git push origin staging | Sube la rama de pruebas y activa el despliegue de staging. |
-| npm install | Instala las dependencias del proyecto. |
-| npm test | Ejecuta las pruebas automatizadas de la API. |
-| docker build -t inventario-api . | Construye la imagen local con el Dockerfile multi-stage. |
-| docker run -d --name inventario -p 3000:3000 inventario-api | Crea el contenedor local de prueba en el puerto 3000. |
-| curl http://localhost:3000/health | Consulta el endpoint de salud en el equipo local. |
-| docker ps | Lista los contenedores en ejecucion. |
-| docker stop inventario | Detiene el contenedor sin eliminarlo. |
-| docker rm inventario | Elimina el contenedor detenido. |
-| ssh -i ~/.ssh/inventario-cd-key.pem ubuntu@54.175.128.130 | Abre una sesion en la instancia remota con la llave privada. |
-| docker pull monsievalda/inventario-api:latest | Descarga la imagen mas reciente publicada en Docker Hub. |
-| docker pull monsievalda/inventario-api:SHA | Descarga una version exacta para el rollback. |
-| docker run -d --name inventario --restart unless-stopped -p 80:3000 monsievalda/inventario-api:latest | Crea el contenedor de produccion en el puerto 80. |
-| curl http://54.175.128.130/health | Verifica el servicio de produccion. |
-| curl http://54.175.128.130:8080/health | Verifica el servicio de staging. |
+| git add . | Se prepararon todos los cambios del proyecto para el commit. |
+| git commit -m mensaje | Se guardaron los cambios en el historial local con una descripcion. |
+| git push origin main | Se subio la rama principal al repositorio remoto y se disparo el pipeline. |
+| git checkout -b staging | Se creo la rama de pruebas. |
+| git push origin staging | Se subio la rama de pruebas y se activo el despliegue de staging. |
+| npm install | Se instalaron las dependencias del proyecto. |
+| npm test | Se ejecutaron las pruebas automatizadas de la API. |
+| docker build -t inventario-api . | Se construyo la imagen local con el Dockerfile multi-stage. |
+| docker run -d --name inventario -p 3000:3000 inventario-api | Se creo el contenedor local de prueba en el puerto 3000. |
+| curl http://localhost:3000/health | Se consulto el endpoint de salud en el equipo local. |
+| docker ps | Se listaron los contenedores en ejecucion. |
+| docker stop inventario | Se detuvo el contenedor sin eliminarlo. |
+| docker rm inventario | Se elimino el contenedor detenido. |
+| ssh -i ~/.ssh/inventario-cd-key.pem ubuntu@54.175.128.130 | Se abrio una sesion en la instancia remota con la llave privada. |
+| docker pull monsievalda/inventario-api:latest | Se descargo la imagen mas reciente publicada en Docker Hub. |
+| docker pull monsievalda/inventario-api:SHA | Se descargo una version exacta para el rollback. |
+| docker run -d --name inventario --restart unless-stopped -p 80:3000 monsievalda/inventario-api:latest | Se creo el contenedor de produccion en el puerto 80. |
+| curl http://54.175.128.130/health | Se verifico el servicio de produccion. |
+| curl http://54.175.128.130:8080/health | Se verifico el servicio de staging. |
 
 El login en Docker Hub, el push de la imagen y el despliegue remoto tambien se ejecutan con comandos, pero en este laboratorio los realiza el workflow de GitHub Actions de forma automatica, por eso no se escriben a mano.
 
