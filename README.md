@@ -1,12 +1,15 @@
-# inventario-ci
+# inventario-ci-2
 
-API CRUD de inventario con integracion continua.
+API CRUD de inventario con integracion continua y despliegue continuo.
 
 ## Tecnologias
 
 - Node.js y Express
 - Jest y Supertest
 - ESLint
+- Docker y Docker Hub
+- GitHub Actions
+- Trivy
 
 ## Endpoints
 
@@ -48,11 +51,19 @@ curl http://localhost:3000/health
 
 ## Despliegue continuo
 
-El workflow `.github/workflows/cd.yml` construye la imagen, la publica en Docker Hub y la despliega en un servidor remoto mediante SSH. Requiere los secretos `DOCKER_USERNAME`, `DOCKER_PASSWORD`, `SSH_HOST`, `SSH_USER` y `SSH_PRIVATE_KEY`, y opcionalmente la variable `IMAGE_NAME`.
+El workflow `.github/workflows/cd.yml` se ejecuta en `push` a `main` y a `staging`:
+
+- Construye la imagen con el `Dockerfile` multi-stage.
+- La publica en Docker Hub con el SHA del commit y con `latest` (en `main`) o `staging` (en `staging`).
+- Ejecuta un escaneo de vulnerabilidades con Trivy.
+- Despliega en el entorno `production` cuando la rama es `main` y en `staging` cuando la rama es `staging`.
+
+Cada entorno de GitHub tiene sus propios secretos `SSH_HOST`, `SSH_USER` y `SSH_PRIVATE_KEY`, y las variables `DEPLOY_PORT` y `CONTAINER_NAME`. Los secretos del repositorio `DOCKER_USERNAME` y `DOCKER_PASSWORD` se usan para publicar la imagen.
+
+El despliegue levanta la nueva version en un puerto alterno, valida `GET /health` y solo entonces reemplaza el contenedor activo. Si el health check falla, la version anterior sigue funcionando.
 
 ## Documentacion del Laboratorio
 
-Puedes encontrar los informes completos con capturas de pantalla y evidencias en:
+El informe completo con la descripcion del pipeline, las capturas de pantalla, las evidencias de cada etapa, el rollback y la practica individual esta en:
 
 - [Ver informe del Laboratorio 5.2](./INFORME.md)
-- [Ver informe del Laboratorio 5.1](./INFORME-LAB-5.1.md)
